@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wait for Button Press</title>
+</head>
+<body>
+    <button id="myButton">Press me</button>
+    <script>
+        function printSay() {
+            console.log("say");
+        }
+
+        let x = 2;
+
+        function waitForButtonPress(buttonId) {
+            return new Promise(resolve => {
+                if (x == 1) {
+                    console.log("hello");
+                    resolve()
+                }
+                else if (x ==2) {
+                    let button = document.getElementById(buttonId).addEventListener('click', resolve, { once: true });
+                }
+            });
+        }
+
+        async function run() {
+            console.log("Waiting for button press...");
+            await waitForButtonPress('myButton');
+            console.log("Button was pressed, continuing execution...");
+        }
+
+        run();
+    </script>
+</body>
+</html>

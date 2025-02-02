@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Turn</title>
+    <style>
+        .container {
+            position: relative;
+            width: 1400px;
+            height: 750px;
+        }
+        .button {
+            position: absolute;
+        }
+        .button1 {
+            top: 60%;
+            left: 40%;
+        }
+        .button2 {
+            top: 60%;
+            left: 45%;
+        }
+        .button3 {
+            top: 60%;
+            left: 52%;
+        }
+        .button4 {
+            top: 60%;
+            left: 35%;
+        }
+        .button5 {
+            top: 60%;
+            left:30%;
+        }
+        .button6 {
+            top: 60%;
+            left: 58%;
+        }
+        .button7{
+            top:60%;
+            left:65%;
+        }
+        .buttonback{
+            top: 10%;
+            left:10%;
+        }
+        .table {
+            position: absolute;
+            top:65%;
+            left: 0%;
+        }
+        .chipTable {
+            position: absolute;
+            top:16%;
+            left:88%;
+        }
+        .cost {
+            position: absolute;
+        }
+        .cost1 {
+            top:55%;
+            left: 35%;
+        }
+        .cost2 {
+            top:55%;
+            left: 40%;
+        }
+        .cost4 {
+            top:55%;
+            left: 45%;
+        }
+        .round {
+            position: absolute;
+            top: 0%;
+            left: 90%;
+        }
+        .roll {
+            position: absolute;
+            top: 20%;
+            left:50%;
+        }
+        .orangeAbility {
+            position: absolute;
+            top: 64%;
+            left: 45%;
+        }
+        .blackAbility {
+            position: absolute;
+            top: 66.5%;
+            left: 45%;
+        }
+        .redAbility {
+            position: absolute;
+            top: 71%;
+            left: 45%;
+        }
+        .blueAbility {
+            position: absolute;
+            top: 75%;
+            left: 45%;
+        }
+        .yellowAbility {
+            position: absolute;
+            top: 80%;
+            left: 45%;
+        }
+        .greenAbility {
+            position: absolute;
+            top: 85%;
+            left: 45%;
+        }
+        .purpleAbility {
+            position: absolute;
+            top: 90%;
+            left: 45%;
+        }
+        .cardAbility {
+            position: absolute;
+            top:0%;
+            left: 35%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button id = "startGame"> Start game</button> -->
+    <div class="container">
+    <button class = "button button2" id = "rollButton" style = "display: none;"> Roll </button>
+    <button class = "button button1" id = "vpButton" style = "display: none;"> VP </button>
+    <!-- <button class = "button button3" id = "endTurnButton" style = "background-color: red;"> End Turn</button> -->
+    <button class = "button button2" id = "coinButton" style = "display: none">Coins</button>
+    
+    <button class = "button button5" id = "orangeButton" style = "display:none"> Orange</button>
+    <button class = "button button4" id = "blackButton" style = "display:none"> Black</button>
+    <button class = "button button1" id = "redButton" style = "display:none"> Red</button>
+    <button class = "button button2" id = "greenButton" style = "display:none"> Green</button>
+    <button class = "button button3" id = "blueButton" style = "display:none"> Blue</button>
+    <button class = "button button6" id = "yellowButton" style = "display:none"> Yellow</button>
+    <button class = "button button7" id = "purpleButton" style = "display:none"> Purple</button>
+
+    <button class = "button button1" id = "orange1" style = "display: none;"> Orange-1</button>
+
+    <button class = "button button1" id = "black1" style = "display: none;"> Black-1</button>
+
+    <button class = "button button4" id = "red1" style = "display: none;"> Red-1</button>
+    <button class = "button button1" id = "red2" style = "display: none;"> Red-2</button>
+    <button class = "button button2" id = "red4" style = "display: none;"> Red-4</button>
+
+    <button class = "button button4" id = "green1" style = "display: none;"> Green-1</button>
+    <button class = "button button1" id = "green2" style = "display: none;"> Green-2</button>
+    <button class = "button button2" id = "green4" style = "display: none;"> Green-4</button>
+
+    <button class = "button button4" id = "blue1" style = "display: none;"> Blue-1</button>
+    <button class = "button button1" id = "blue2" style = "display: none;"> Blue-2</button>
+    <button class = "button button2" id = "blue4" style = "display: none;"> Blue-4</button>
+
+    <button class = "button button4" id = "yellow1" style = "display: none;"> Yellow-1</button>
+    <button class = "button button1" id = "yellow2" style = "display: none;"> Yellow-2</button>
+    <button class = "button button2" id = "yellow4" style = "display: none;"> Yellow-4</button>
+
+    <button class = "button button1" id = "purple1" style = "display: none;"> Purple-1</button>
+
+    <button class = "button buttonback" id = "back" style = "display: none;"> Back</button>
+    
+    <button class = "button button4" id = "piece" style = "display:none"> Piece</button>
+    <button class = "button button1" id = "revive" style = "display:none"> Revive</button>
+    <button class = "button button2" id = "skip" style = "display:none"> Skip</button>
+
+    <button class = "button button4" id = "button1" style = "display:none"></button>
+    <button class = "button button2" id = "button2" style = "display:none"></button>
+    <select class = "button button1" id = "selector" style = "display:none"></select>
+    <button class = "button button3" id = "doneButton" style = "display:none"></button>
+    <button class = "button button3" id = "doneButton2" style = "display:none"></button>
+    <p class = "orangeAbility" id = "orangeAbility" style = "background-color:orange; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "blackAbility" id = "blackAbility" style = "background-color:black; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "redAbility" id = "redAbility" style = "background-color:red; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "blueAbility" id = "blueAbility" style = "background-color:blue; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "yellowAbility" id = "yellowAbility" style = "background-color:yellow; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "greenAbility" id = "greenAbility" style = "background-color:green; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "purpleAbility" id = "purpleAbility" style = "background-color:purple; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "cardAbility" id = cardAbility></p>
+   
+    <p class = "round" id = "round" style = "font-size: 24px; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"></p>
+    <p id = "message"></p>
+    <p id = "turnIndicator" style = "position: absolute; top: 0%; left: 45%; font-size: 30px"></p>
+    <p id = "under" style = "position: absolute; top: 10%; left: 45%; font-size: 20px"></p>
+    <p class= "cost cost1" id = "cost1" style = "font-size: 12px"></p>
+    <p class = "cost cost2" id = "cost2" style = "font-size: 12px"></p>
+    <p class = "cost cost4" id = "cost4" style = "font-size: 12px"></p>
+    <svg class = "roll" id = "rectCont">
+        <rect class = "roll" id = "roll" width = "60" height = "60" fill = "white" stroke = "black" style = "display:none"></rect>
+        <circle id = "circle" cx = "30" cy = "30" r = "20" style = "display:none;"></circle>
+        <text id = "rollText" x = "10" y = "40" font-size = "24" style = "display:none"></text>
+    </svg>
+    <svg id = "main" x = "0px" y="0px" xmlns = "http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50">
+    <g id = "board" style = "display: inline;">
+    </g>
+    <g id = "red1chip" style = "display: inline;">
+        <circle id = "chip" style = "display: none;" 
+        cx = "25" cy = "25" r="10" fill = "red" stroke = "black" 
+        />
+        <text id = "value" style = "display: none;" x = "12.5" y = "37.5" font-family = "Arial" font-size = "20" fill = "black"></text>
+    </g>
+</svg>
+<table class = "table" border = "1" id = "table">
+    <tr>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Name</th>
+        <th style = "background-color: white; color: rgb(130, 253, 130); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">VP</th>
+        <th style = "background-color: white; color: rgb(173, 173, 173); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"> Piece </th>
+        <th style = "background-color: white; color:rgb(173, 173, 173); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Catch Ups</th>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Revive</th>
+        <th style = "background-color: white; color:blue; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">Sapphires</th>
+        <th style = "background-color: white;">|||||</th>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Space</th>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Coins</th>
+        <th style = "background-color: white; color:rgb(130, 253, 130); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">VP</th>
+        <th style = "background-color: white; color:blue; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">Sapphire?</th>
+    </tr>
+</table>
+<table class = "chipTable" border = "1" id = "chipTable">
+    <tr>
+        <th style = "background-color: white; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Token</th>
+        <th style = "background-color: white; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Cost</th>
+        <th style = "background-color: white; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Avail</th>
+    </tr>
+</table>
+</div>
+
+    <script src="end_turn.js"></script>
+</body>
+</html>

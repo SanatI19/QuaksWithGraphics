@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Button Example</title>
+</head>
+<body>
+    <button id = "playLocalButton"> Play Local </button>
+    <button id = "playOnlineButton"> Play Online </button>
+    <p id = "message"></p>
+    <svg id = "main" x = "0px" y="0px" xmlns = "http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100">
+    <g id = "board" style = "display: inline;">
+    </g>
+    <g id = "red1chip" style = "display: inline;">
+        <circle id = "chip" style = "display: none;" 
+        cx = "25" cy = "25" r="10" fill = "red" stroke = "black" 
+        />
+        <text id = "value" style = "display: none;" x = "12.5" y = "37.5" font-family = "Arial" font-size = "20" fill = "black"></text>
+    </g>
+</svg>
+    <script src="pregame.js"></script>
+</body>
+</html>

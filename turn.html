@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Turn</title>
+    <style>
+        .container {
+            position: relative;
+            width: 1400px;
+            height: 750px;
+            background-color: #524cb67b;
+            border: 2px solid black;
+            /* border-color: black;
+            border-width: 10px; */
+        }
+        .button {
+            position: absolute;
+        }
+        .button1 {
+            top: 62%;
+            left: 41.6%;
+        }
+        .button2 {
+            top: 62%;
+            left: 45%;
+        }
+        .button3 {
+            top: 62%;
+            left: 52%;
+        }
+        .button4 {
+            top:62%;
+            left:60%;
+        }
+        .buttonRed {
+            top:5%;
+            left: 80%;
+        }
+        .table {
+            position: absolute;
+            top:65%;
+            left:0%;
+        }
+        .chipTable {
+            position: absolute;
+            top:16%;
+            left:88%;
+        }
+        .round {
+            position: absolute;
+            top: -2%;
+            left: 90%;
+        }
+        .roll {
+            position: absolute;
+            top: 20%;
+            left:50%;
+        }
+        .orangeAbility {
+            position: absolute;
+            top: 64%;
+            left: 45%;
+        }
+        .blackAbility {
+            position: absolute;
+            top: 67%;
+            left: 45%;
+        }
+        .redAbility {
+            position: absolute;
+            top: 72%;
+            left: 45%;
+        }
+        .blueAbility {
+            position: absolute;
+            top: 77%;
+            left: 45%;
+        }
+        .yellowAbility {
+            position: absolute;
+            top: 82%;
+            left: 45%;
+        }
+        .greenAbility {
+            position: absolute;
+            top: 87%;
+            left: 45%;
+        }
+        .purpleAbility {
+            position: absolute;
+            top: 92%;
+            left: 45%;
+        }
+        .cardAbility {
+            position: absolute;
+            top:0%;
+            left: 35%;
+        }
+        .redLocation {
+            position: relative;
+            top:9%;
+            left:85%;
+        }
+        .popup {
+            display: none;
+            justify-content: center;
+            position: fixed;
+            z-index: 1;
+            left:0;
+            top:0;
+            width: 100%;
+            height:100%;
+
+            overflow:auto;
+            align-items: center;
+            background-color: rgba(0,0,0,0.4);
+            opacity: 0.8;
+        }
+        .popup-content {
+            margin: 15% auto;
+
+            padding: 20px;
+            border: 1px solid #888;
+            width:40%;
+            text-align: center;
+        }
+        .popup-buttons{
+            margin-top:20px;
+        }
+        .popup-content-blue {
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width:40%;
+            height: 30%;
+            justify-content: center;
+            text-align: center;
+        }
+        .popup-buttons-blue{
+            margin-top:20px;
+            justify-content: center;
+        }
+        .popup-content-card {
+            margin: 15% auto;
+
+            padding: 0px;
+            border: 1px solid #888;
+            width:60%;
+            height: 30%;
+            justify-content: center;
+            text-align: center;
+            /* overflow: auto; */
+        }
+        .popup-buttons-card{
+            /* margin-top:20px; */
+            /* width: 100%;
+            height: 100%; */
+            justify-content: center;
+            /* overflow: auto; */
+            align-items: center;
+        }
+        /* .skip-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <button id = "startGame"> Start game</button> -->
+    <div class="container">
+    <button class = "button button1" id = "drawButton"> Draw </button>
+    <button class = "button button3" id = "endTurnButton" style = "background-color: red;">End Turn</button>
+    <button class = "button button2" id = "reviveButton"> Use revive</button>
+    <button class = "button button2" id = "continueButton" style = "display:none">Continue</button>
+    <button class = "button button3" id = "startOver" style = "display:none">Start Over</button>
+    <button class = "button button1" id = "card1" style = "display:none"> </button>
+    <button class = "button button2" id = "card2" style = "display:none"> </button>
+    <button class = "button button3" id = "card3" style = "display:none"> </button>
+    <button class = "button button3" id = "card4" style = "display:none"> </button>
+    <button class = "button button4" id = "replace" style = "display:none"></button>
+    <button class = "button buttonRed" id = "doneRed" style = "display:none"></button>
+    <select class = "button button1" id = "selector" style = "display:none"></select>
+    <p class = "round" id = "round" style = "font-size: 24px; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;"></p>
+    <p id = "busted" style = "position: absolute; top: 2%; left:10%; font-size: 20px; color: red;"></p>
+    <p id = "message" style = "position: absolute; top: 2%; left:10%; font-size: 20px;"></p>
+    <p id = "under" style = "position: absolute; top: 6%; left: 45%; font-size: 20px"></p>
+    <p id = "turnIndicator" style = "position: absolute; top: 0%; left: 45%; font-size: 30px"></p>
+    <p class = "orangeAbility" id = "orangeAbility" style = "background-color:orange; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "blackAbility" id = "blackAbility" style = "background-color:black; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "redAbility" id = "redAbility" style = "background-color:red; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "blueAbility" id = "blueAbility" style = "background-color:blue; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "yellowAbility" id = "yellowAbility" style = "background-color:yellow; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "greenAbility" id = "greenAbility" style = "background-color:green; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+    <p class = "purpleAbility" id = "purpleAbility" style = "background-color:purple; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"></p>
+        <p style = "fill: rgb(255, 186, 126);"></p>
+    <p class = "cardAbility" id = cardAbility></p>
+    <p id = "red1text" style = "position: absolute; top: 11%; left: 88%; display:none"></p>
+    <p id = "red2text" style = "position: absolute; top: 11%; left: 93%; display:none"></p>
+    <p id = "red4text"style = "position: absolute; top: 11%; left: 97%; display:none"></p>
+    <svg id = "main" x = "0px" y="0px" xmlns = "http://www.w3.org/2000/svg"
+        viewBox="0 0 100 50">
+    <g id = "board" style = "display: inline;">
+        <radialGradient id="gradWhite" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(255, 255, 255);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(178, 178, 178);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradBlack" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(127, 127, 127);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(0, 0, 0);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradOrange" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(255, 184, 117);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(177, 88, 0);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradGreen" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(30, 224, 0);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(11, 114, 0);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradBlue" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(131, 181, 255);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(0, 102, 255);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradYellow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(255, 245, 57);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(189, 187, 63);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradRed" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(255, 122, 122);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(200, 0, 0);stop-opacity:1" />
+        </radialGradient>
+        <radialGradient id="gradPurple" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(248, 60, 255);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(149, 0, 172);stop-opacity:1" />
+        </radialGradient>
+    </g>
+    <g id = "red1chip" style = "display: inline;">
+        <circle id = "chip" style = "display: none;" 
+        cx = "25" cy = "25" r="10" fill = "red" stroke = "black" 
+        />
+        <text id = "value" style = "display: none;" x = "12.5" y = "37.5" font-family = "Arial" font-size = "20" fill = "black"></text>
+    </g>
+    <g id = "redChips" style = "display:inline;"></g>
+</svg>
+<svg class = "roll" id = "rectCont">
+    <rect class = "roll" id = "roll" width = "60" height = "60" fill = "white" stroke = "black" style = "display:none"></rect>
+    <circle id = "circle" cx = "30" cy = "30" r = "20" style = "display:none;"></circle>
+    <text id = "rollText" x = "10" y = "40" font-size = "24" style = "display:none"></text>
+</svg>
+<svg id = "blue1images" width = 50%></svg>
+<svg id = "card16images" width = 50%></svg>
+<table class = "table" style = "background-color: white;" border = "1" id = "table">
+    <tr>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Name</th>
+        <th style = "background-color: white; color: rgb(130, 253, 130); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">VP</th>
+        <th style = "background-color: white; color: rgb(173, 173, 173); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;"> Piece </th>
+        <th style = "background-color: white; color:rgb(173, 173, 173); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Catch Ups</th>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Revive</th>
+        <th style = "background-color: white; color:blue; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">Sapphires</th>
+        <th style = "background-color: white;">|||||</th>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Space</th>
+        <th style = "background-color: white; color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Coins</th>
+        <th style = "background-color: white; color:rgb(130, 253, 130); text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">VP</th>
+        <th style = "background-color: white; color:blue; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;">Sapphire?</th>
+    </tr>
+</table>
+<table class = "chipTable" style = "background-color: white;" border = "1" id = "chipTable">
+    <tr>
+        <th style = "background-color: white; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Token</th>
+        <th style = "background-color: white; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Cost</th>
+        <th style = "background-color: white; color:white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;">Avail</th>
+    </tr>
+</table>
+</div>
+    <div id = "popup" class = "popup">
+        <div class = "popup-content" style = "background-color: #fefefe;">
+            <p>Are you sure you want to end turn?</p>
+            <div class = "popup-buttons">
+                <button onclick = "handleYes()">Yes</button>
+                <button onclick = "handleNo()">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id = "blue1popup" class = "popup">
+    <div id = "bluePopupContent" class = "popup-content-blue" style = "background-color: #fefefe;">
+        <p>Would you like to play any of these tokens?</p>
+        <div id = "blueButtons" class = "popup-buttons-blue">
+            <!-- <button onclick = "handleYes()">Yes</button>
+            <button onclick = "handleNo()">No</button> -->
+        </div>
+    </div>
+</div>
+<div id = "card16popup" class = "popup">
+    <div id = "cardPopupContent" class = "popup-content-card" style = "background-color: #fefefe;">
+        <p>Which token would you like to play?</p>
+        <div id = "card16buttons" class = "popup-buttons-card">
+            <!-- <button onclick = "handleYes()">Yes</button>
+            <button onclick = "handleNo()">No</button> -->
+        </div>
+    </div>
+</div>
+    <script src="turn.js"></script>
+</body>
+</html>
